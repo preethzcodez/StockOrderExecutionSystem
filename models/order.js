@@ -1,7 +1,7 @@
 /**
  * Order Model
  */
-var Order = function(data) {
+var Order = function (data) {
     this.data = data;
 }
 

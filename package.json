@@ -13,6 +13,7 @@
     "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
     "fast-csv": "^2.4.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "ignore-case": "^0.1.0"
   }
 }
