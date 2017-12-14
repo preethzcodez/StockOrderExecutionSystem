@@ -8,7 +8,7 @@ module.exports = {
      * Parse CSV File And Start Order Processing
      * @param {*} file 
      */
-    parseCSV: function (file) {
+    parseCSV: function (file, res) {
         var stream = fs.createReadStream(file);
 
         var orders = [];
@@ -21,19 +21,29 @@ module.exports = {
                     status = "CLOSED";
                 }
 
-                var order = new Order({ Id: data[0], Side: data[1], Company: data[2], Quantity: data[3], RemainingQuantity: data[3], Status: status });
-                orders.push(order.data); // add order into list
+                if (!ignoreCase.includes(data[0], "stock")) { // Skip The Header, If Any
+                    var order = new Order({ Id: data[0], Side: data[1], Company: data[2], Quantity: data[3], RemainingQuantity: data[3], Status: status });
+                    orders.push(order.data); // add order into list
+                }
             })
             .on("end", function () {
 
                 // CSV Parsing Done - Start Order Processng
                 var results = orderProcessing(orders);
+
+                // reload page with results data 
+                console.log(results);
+                res.render("index", { results });
             });
 
         stream.pipe(csvStream);
     }
 }
 
+/**
+ * Start Processing Orders
+ * @param {*} data 
+ */
 var orderProcessing = function (data) {
     var count = 1;
     data.forEach(order => {
@@ -70,5 +80,5 @@ var orderProcessing = function (data) {
         }
         count++;
     });
-    console.log(data);
+    return data;
 }

@@ -8,10 +8,11 @@ var index = require('./routes/index');
 app.listen(2000);
 
 // Sets The View Engine
-app.set("views",path.join(__dirname,"/views"));
-app.set("view engine","ejs");
+app.set("views", path.join(__dirname, "/views"));
+app.set("view engine", "ejs");
 
 app.use(upload());
-app.use("/",index);
+app.use(express.static(__dirname + '/public'));
+app.use("/", index);
 
 module.exports = app;

@@ -1,12 +1,6 @@
-Stock,Id,Side,Company,Quantity
-1,Buy,ABC,10,
-2,Buy,ABC,12,
-3,Buy,ABC,13,
-4,Sell,XYZ,14,
-5,Sell,XYZ,10,
-6,Sell,ABC,10,
-7,Buy,CBA,2,
-8,Sell,ABC,13,
-9,Buy,XYZ,15,
-10,Buy,AP,1,
-11,Sell,AP,3,
+Stock Id,Side,Company,Quantity
+1,Buy,ABC,10
+2,Sell,XYZ,15
+3,Sell,ABC,13
+4,Buy,XYZ,10
+5,Buy,XYZ,8

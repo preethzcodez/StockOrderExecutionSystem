@@ -1,10 +1,60 @@
 <html>
 
+<head>
+    <link href="../public/css/tablestyle.css" rel="stylesheet" type="text/css">
+</head>
+<h1>
+    <center>Stock Order Execution System</center>
+</h1>
+<hr/>
+
 <body>
-    <form ref='uploadForm' id='uploadForm' action='/' method='post' encType="multipart/form-data">
-        <input type="file" name="soes" accept=".csv, text/csv" />
-        <input type='submit' value='Upload!' />
-    </form>
+    <br/>
+    <center>
+        <form ref='uploadForm' id='uploadForm' method='post' encType="multipart/form-data">
+            <input type="file" name="soes" accept=".csv, text/csv" />
+            <input type='submit' value='Submit' />
+        </form>
+
+        <!-- Generate Table With Data -->
+        <% try {%>
+            <% if (results.length > 0) { %>
+                <table>
+                    <tr>
+                        <th>STOCK ID</th>
+                        <th>SIDE</th>
+                        <th>COMPANY</th>
+                        <th>QUANTITY</th>
+                        <th>REMAINING QUANTITY</th>
+                        <th>STATUS</th>
+                    </tr>
+                    <% for(var i = 0;i<results.length;i++) {%>
+                        <tr>
+                            <td>
+                                <%=results[i].Id%>
+                            </td>
+                            <td>
+                                <%=results[i].Side%>
+                            </td>
+                            <td>
+                                <%=results[i].Company%>
+                            </td>
+                            <td>
+                                <%=results[i].Quantity%>
+                            </td>
+                            <td>
+                                <%=results[i].RemainingQuantity%>
+                            </td>
+                            <td>
+                                <%=results[i].Status%>
+                            </td>
+                        </tr>
+                        <% } %>
+                </table>
+                <% } 
+        } catch(err) {
+    }%>
+    </center>
 </body>
 
 </html>

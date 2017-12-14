@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var processOrder = require('../controller/parse_csv.js');
+var processOrder = require('../controller/order_processing.js');
 
 router.get("/", function (req, res) {
     res.render("index");
@@ -7,18 +7,15 @@ router.get("/", function (req, res) {
 
 // Post Request
 router.post("/", function (req, res) {
-    if (!req.files)
-        res.status(400).send("No Files Uploaded");
-    else {
+    var sampleFile = req.files.soes;
 
-        var sampleFile = req.files.soes;
-        // Use the mv() method to place the file somewhere on your server
-        sampleFile.mv(__dirname + "/upload.csv", function (err) {
-            if (err)
-                return res.status(500).send(err);
-            processOrder.parseCSV(__dirname + "/upload.csv");
-            res.send('File uploaded!');
-        });
-    }
+    // Save The File In Server
+    sampleFile.mv(__dirname + "/upload.csv", function (err) {
+        if (err)
+            return res.status(500).send(err);
+        
+        // Start Processing Orders
+        processOrder.parseCSV(__dirname + "/upload.csv",res);
+    });
 });
 module.exports = router;
