@@ -1,5 +1,6 @@
 var csv = require("fast-csv");
 var fs = require("fs");
+var ignoreCase = require('ignore-case');
 var op = require('../engine/process_engine');
 Order = require('../models/order');
 
