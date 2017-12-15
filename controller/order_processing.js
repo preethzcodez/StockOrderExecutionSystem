@@ -32,7 +32,6 @@ module.exports = {
                 var results = orderProcessing(orders);
 
                 // reload page with results data 
-                console.log(results);
                 res.render("index", { results });
             });
 

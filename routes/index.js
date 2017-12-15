@@ -7,15 +7,17 @@ router.get("/", function (req, res) {
 
 // Post Request
 router.post("/", function (req, res) {
-    var sampleFile = req.files.soes;
+    if (req.files) {
+        var file = req.files.soes;
 
-    // Save The File In Server
-    sampleFile.mv(__dirname + "/upload.csv", function (err) {
-        if (err)
-            return res.status(500).send(err);
-        
-        // Start Processing Orders
-        processOrder.parseCSV(__dirname + "/upload.csv",res);
-    });
+        // Save The File In Server (Folder - uploads)
+        file.mv("./uploads/soes.csv", function (err) {
+            if (err)
+                return res.status(500).send(err);
+
+            // Start Processing Orders
+            processOrder.parseCSV("./uploads/soes.csv", res);
+        });
+    }
 });
 module.exports = router;

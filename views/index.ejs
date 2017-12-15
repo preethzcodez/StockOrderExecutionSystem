@@ -1,7 +1,8 @@
 <html>
 
 <head>
-    <link href="../public/css/tablestyle.css" rel="stylesheet" type="text/css">
+    <link href="/css/tablestyle.css" rel="stylesheet" type="text/css">
+    <%include partials/enable_submitbutton.ejs%>
 </head>
 <h1>
     <center>Stock Order Execution System</center>
@@ -12,22 +13,16 @@
     <br/>
     <center>
         <form ref='uploadForm' id='uploadForm' method='post' encType="multipart/form-data">
-            <input type="file" name="soes" accept=".csv, text/csv" />
-            <input type='submit' value='Submit' />
+            <input type="file" onchange='enableButton()' name="soes" accept=".csv, text/csv" />
+            <input id="submit" type='submit' value='Submit' disabled />
         </form>
+        
 
         <!-- Generate Table With Data -->
         <% try {%>
             <% if (results.length > 0) { %>
                 <table>
-                    <tr>
-                        <th>STOCK ID</th>
-                        <th>SIDE</th>
-                        <th>COMPANY</th>
-                        <th>QUANTITY</th>
-                        <th>REMAINING QUANTITY</th>
-                        <th>STATUS</th>
-                    </tr>
+                    <%include partials/table_header.ejs%>
                     <% for(var i = 0;i<results.length;i++) {%>
                         <tr>
                             <td>
