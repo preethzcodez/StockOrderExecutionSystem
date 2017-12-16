@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <title>Stock Order Execution System</title>
     <link href="/css/tablestyle.css" rel="stylesheet" type="text/css">
     <script src="/js/enable_submitbutton.js" type="text/javascript"></script>
 </head>
@@ -16,35 +17,34 @@
             <input type="file" onchange='enableButton()' name="soes" accept=".csv, text/csv" />
             <input id="submit" type='submit' value='Submit' disabled />
         </form>
-        
 
         <!-- Generate Table With Data -->
         <% try {%>
             <% if (results.length > 0) { %>
                 <table id="myTable">
                     <%include partials/table_header.ejs%>
-                    <% for(var i = 0;i<results.length;i++) {%>
-                        <tr>
-                            <td>
-                                <%=results[i].Id%>
-                            </td>
-                            <td>
-                                <%=results[i].Side%>
-                            </td>
-                            <td>
-                                <%=results[i].Company%>
-                            </td>
-                            <td>
-                                <%=results[i].Quantity%>
-                            </td>
-                            <td>
-                                <%=results[i].RemainingQuantity%>
-                            </td>
-                            <td>
-                                <%=results[i].Status%>
-                            </td>
-                        </tr>
-                        <% } %>
+                        <% for(var i = 0;i<results.length;i++) {%>
+                            <tr>
+                                <td>
+                                    <%=results[i].Id%>
+                                </td>
+                                <td>
+                                    <%=results[i].Side%>
+                                </td>
+                                <td>
+                                    <%=results[i].Company%>
+                                </td>
+                                <td>
+                                    <%=results[i].Quantity%>
+                                </td>
+                                <td>
+                                    <%=results[i].RemainingQuantity%>
+                                </td>
+                                <td>
+                                    <%=results[i].Status%>
+                                </td>
+                            </tr>
+                            <% } %>
                 </table>
                 <% } 
         } catch(err) {

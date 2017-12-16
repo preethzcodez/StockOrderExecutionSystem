@@ -15,14 +15,16 @@ module.exports = {
         var orders = [];
         var csvStream = csv()
             .on("data", function (data) {
-                var status = "OPEN";
 
-                // if order quantity is zero, set status to closed
-                if (data[3] == 0) {
-                    status = "CLOSED";
-                }
+                if (!isNaN(data[3])) { // Skip The Header, If Any (Check Quantity Value Is A Number)
 
-                if (!ignoreCase.includes(data[0], "stock")) { // Skip The Header, If Any
+                    var status = "OPEN";
+
+                    // if order quantity is zero, set status to closed
+                    if (data[3] == 0) {
+                        status = "CLOSED";
+                    }
+
                     var order = new Order({ Id: data[0], Side: data[1], Company: data[2], Quantity: data[3], RemainingQuantity: data[3], Status: status });
                     orders.push(order.data); // add order into list
                 }
