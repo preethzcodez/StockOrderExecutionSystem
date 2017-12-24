@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var processOrder = require('../controller/order_processing.js');
+var processOrder = require('../main/order-processing.js');
 
 router.get("/", function (req, res) {
     res.render("index");
