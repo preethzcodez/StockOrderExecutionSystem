@@ -14,8 +14,8 @@
 **Expected Output:**
 | STOCK ID | SIDE | COMPANY | QUANTITY | REMAINING QUANTITY | STATUS |
 |----------|------|---------|----------|--------------------|--------|
-| 1 | Buy | ABC | 10 | 0 | CLOSED |
-| 2 | Sell | XYZ | 15 | 0 | CLOSED |
-| 3 | Sell | ABC | 13 | 3 | OPEN |
-| 4 | Buy | XYZ | 10 | 0 | CLOSED |
-| 5 | Buy | XYZ | 8 | 3 | OPEN |
+| 1        | Buy  | ABC     | 10       | 0                  | CLOSED |
+| 2        | Sell | XYZ     | 15       | 0                  | CLOSED |
+| 3        | Sell | ABC     | 13       | 3                  | OPEN   |
+| 4        | Buy  | XYZ     | 10       | 0                  | CLOSED |
+| 5        | Buy  | XYZ     | 8        | 3                  | OPEN   |
